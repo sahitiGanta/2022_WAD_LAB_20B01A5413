@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>fibfactprimpallin</title>
+        <script>
+            function factorial(){
+			var num, fac, i;
+			num = document.getElementById('num').value;
+			fac = 1;
+			for(i = 1;i <= num; i++){
+				fac = fac * i;
+			}
+			document.getElementById("result").innerHTML= document.write("Factorial of " + num +": " + fac);
+		}
+        function fibonacci(){
+			var n = document.getElementById("num").value;
+            var result = document.getElementById('result');
+			var n1,n2,n3,r;
+			n1 = 0,n2 = 1;
+			r = n1 + " " + n2;
+			for(var i = 1; i < n; i++)
+			{
+				n3 = n1 + n2;
+				n1 = n2;
+				n2 = n3;
+				r = r + " " + n3;
+			}
+			result.innerHTML =  document.write("The fibonocci series are: " + r);
+		}
+        function is_prime(val){
+			for(var i = 2; i < val; i++){
+				if(val % i == 0){
+					return false;
+				}
+			}
+			return true;
+		}
+		function prime(){
+			var num = document.getElementById('num').value;
+            var result = document.getElementById('result');
+			if(num == 1){
+				result.innerHTML = document.write(num + "is neither prime nor composite");
+			}
+			if(num > 1){
+				r = ""
+				for(var i = 2; i < num; i++){
+					if(is_prime(i)){
+						r = r + i + " "
+					}
+				}
+				result.innerHTML = document.write("The Prime Numbers upto " + num + " are <br>" + r);
+			}
+		}
+        function palindrome(){
+		var temp, pal = 0,rem;
+		var n = document.getElementById("num").value;
+        var result = document.getElementById("result");
+		temp = n;
+		while(n>0)
+		{
+			rem = n%10;
+			n = parseInt(n/10);
+			pal = pal * 10 + rem;
+		}
+		if(pal == temp)
+		{
+			result.innerHTML = document.write(temp +" is Palindrome");
+		}
+		else
+		{
+			result.innerHTML = document.write(temp+" is not palindrome");
+		}
+	}
+        </script>
+    </head>
+    <body>
+        <table align = "center">
+            <tr>
+                <td>Enter number</td>
+                <td><input type = "text" placeholder = "enter number" id = "num"></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type = "submit" value = "factorial" onclick = "factorial()">
+                    <input type = "submit" value = "fibonacci" onclick = "fibonacci()">
+                    <input type = "submit" value = "prime" onclick = "prime()">
+                    <input type = "submit" value = "pallindrome" onclick = "palindrome()">
+                </td>
+            </tr>
+            <tr>
+                <td><p id="result" name = 'result'></p></td>
+            </tr>
+        </table>
+    </body>
+</html>
